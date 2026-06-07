@@ -25,19 +25,32 @@
   body { font-family: var(--sans); background: var(--black); color: var(--white); overflow-x: hidden; line-height: 1.6; }
 
   /* NAV */
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 4rem; background: rgba(8,8,8,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 4rem; background: rgba(8,8,8,0.96); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.1); }
   .nav-logo { display: flex; flex-direction: column; text-decoration: none; }
   .nav-logo-name { font-family: var(--serif); font-size: 1.3rem; letter-spacing: -0.02em; color: var(--white); line-height: 1; }
   .nav-logo-name span { color: var(--gold); }
   .nav-logo-tag { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-top: 2px; }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a { font-size: 0.85rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+  .nav-links a { font-size: 0.85rem; color: rgba(255,255,255,0.85); text-decoration: none; transition: color 0.2s; font-weight: 400; letter-spacing: 0.01em; }
   .nav-links a:hover { color: var(--white); }
   .nav-cta { background: var(--gold) !important; color: var(--black) !important; padding: 0.5rem 1.25rem; border-radius: 2rem; font-weight: 500 !important; transition: all 0.2s !important; }
   .nav-cta:hover { background: var(--white) !important; color: var(--black) !important; }
 
   /* HERO */
-  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 9rem 4rem 5rem; position: relative; overflow: hidden; }
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; padding: 7rem 4rem 3rem; position: relative; overflow: hidden; }
+  .hero-left { display: flex; flex-direction: column; }
+  .hero-right { display: flex; align-items: center; justify-content: center; }
+  .hero-card-stack { width: 100%; max-width: 480px; display: flex; flex-direction: column; gap: 1rem; }
+  .hero-metric-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 1.25rem; padding: 1.5rem 1.75rem; display: flex; align-items: center; justify-content: space-between; transition: all 0.3s; }
+  .hero-metric-card:hover { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.04); }
+  .hero-metric-card.featured { background: rgba(201,168,76,0.08); border-color: rgba(201,168,76,0.25); }
+  .hmc-left { display: flex; flex-direction: column; }
+  .hmc-label { font-size: 0.72rem; color: rgba(255,255,255,0.35); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; }
+  .hmc-value { font-family: 'Instrument Serif', Georgia, serif; font-size: 1.75rem; color: var(--white); letter-spacing: -0.02em; line-height: 1; }
+  .hmc-value.gold { color: var(--gold); }
+  .hmc-icon { font-size: 1.5rem; opacity: 0.6; }
+  .hmc-trend { font-size: 0.75rem; font-weight: 500; color: #4ade80; background: rgba(74,222,128,0.1); padding: 0.2rem 0.6rem; border-radius: 2rem; }
+  .hmc-trend.warn { color: #fb923c; background: rgba(251,146,60,0.1); }
   .hero-grid-bg {
     position: absolute; inset: 0; pointer-events: none;
     background-image: linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
@@ -69,12 +82,12 @@
   .btn-ghost { font-size: 0.9rem; color: rgba(255,255,255,0.4); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: color 0.2s; border: 1px solid rgba(255,255,255,0.12); padding: 0.875rem 1.5rem; border-radius: 2rem; }
   .btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
 
-  .hero-stats { display: flex; gap: 0; margin-top: 5rem; border-top: 1px solid rgba(255,255,255,0.07); opacity: 0; animation: fadeUp 0.8s ease 0.9s forwards; }
-  .stat-item { flex: 1; padding: 2rem 0; padding-right: 3rem; border-right: 1px solid rgba(255,255,255,0.07); }
-  .stat-item:last-child { border-right: none; padding-right: 0; padding-left: 3rem; }
-  .stat-item:not(:first-child):not(:last-child) { padding-left: 3rem; }
-  .stat-num { font-family: var(--serif); font-size: 2.2rem; letter-spacing: -0.02em; color: var(--white); }
-  .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.35); margin-top: 0.3rem; }
+  .hero-stats { display: flex; gap: 0; margin-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.07); opacity: 0; animation: fadeUp 0.8s ease 0.9s forwards; }
+  .stat-item { flex: 1; padding: 1.25rem 0; padding-right: 2rem; border-right: 1px solid rgba(255,255,255,0.07); }
+  .stat-item:last-child { border-right: none; padding-right: 0; padding-left: 2rem; }
+  .stat-item:not(:first-child):not(:last-child) { padding-left: 2rem; }
+  .stat-num { font-family: var(--serif); font-size: 1.75rem; letter-spacing: -0.02em; color: var(--white); }
+  .stat-label { font-size: 0.72rem; color: rgba(255,255,255,0.35); margin-top: 0.3rem; }
 
   /* MARQUEE */
   .marquee-section { border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 0.9rem 0; overflow: hidden; background: rgba(255,255,255,0.02); }
@@ -237,6 +250,8 @@
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
     .hero, .gen4, .onestop, .problem, .errors, .services, .pay-options, .how, .forwho, .cta-section { padding: 5rem 1.5rem; }
+    .hero { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-right { display: none; }
     .hero-title { font-size: 2.8rem; }
     .hero-stats { flex-direction: column; gap: 0; }
     .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 1.25rem 0; }
@@ -277,32 +292,73 @@
   <div class="hero-grid-bg"></div>
   <div class="hero-glow"></div>
   <div class="hero-glow2"></div>
-  <div class="gen-badge">
-    <div class="gen-badge-dot"></div>
-    <span>Gen 4 Banking Stack — Now Available for D2C</span>
-  </div>
-  <h1 class="hero-title">
-    A smarter banking stack<br>
-    built for brands that<br>
-    <em>move fast.</em>
-  </h1>
-  <p class="hero-sub">Sampoorn Technologies is the one-stop destination that connects your business to the right payment infrastructure — built for how modern brands grow, sell and scale.</p>
-  <div class="hero-actions">
-    <a href="#contact" class="btn-gold">Get a free audit →</a>
-    <a href="#gen4" class="btn-ghost">Explore Gen 4 ↓</a>
-  </div>
-  <div class="hero-stats">
-    <div class="stat-item">
-      <div class="stat-num">Gen 4</div>
-      <div class="stat-label">Banking stack — built for the next era of commerce</div>
+  <div class="hero-left">
+    <div class="gen-badge">
+      <div class="gen-badge-dot"></div>
+      <span>Gen 4 Banking Stack — Now Available for D2C</span>
     </div>
-    <div class="stat-item">
-      <div class="stat-num">One Stop</div>
-      <div class="stat-label">From checkout audit to bank relationship advisory</div>
+    <h1 class="hero-title">
+      A smarter banking stack<br>
+      built for brands that<br>
+      <em>move fast.</em>
+    </h1>
+    <p class="hero-sub">Sampoorn Technologies is the one-stop destination that connects your business to the right payment infrastructure — built for how modern brands grow, sell and scale.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-gold">Get a free audit →</a>
+      <a href="#gen4" class="btn-ghost">Explore Gen 4 ↓</a>
     </div>
-    <div class="stat-item">
-      <div class="stat-num">₹100Cr+</div>
-      <div class="stat-label">GMV we've helped optimise across D2C brands</div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">Gen 4</div>
+        <div class="stat-label">Next-era banking stack</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">One Stop</div>
+        <div class="stat-label">Full payment coverage</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">₹100Cr+</div>
+        <div class="stat-label">GMV optimised</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card-stack">
+      <div class="hero-metric-card featured">
+        <div class="hmc-left">
+          <span class="hmc-label">Checkout conversion</span>
+          <span class="hmc-value gold">+28%</span>
+        </div>
+        <span class="hmc-trend">↑ After audit</span>
+      </div>
+      <div class="hero-metric-card">
+        <div class="hmc-left">
+          <span class="hmc-label">Payment failure rate</span>
+          <span class="hmc-value">12% → 3%</span>
+        </div>
+        <span class="hmc-icon">🔬</span>
+      </div>
+      <div class="hero-metric-card">
+        <div class="hmc-left">
+          <span class="hmc-label">Transaction cost</span>
+          <span class="hmc-value">Reduced</span>
+        </div>
+        <span class="hmc-trend">Stack optimised</span>
+      </div>
+      <div class="hero-metric-card">
+        <div class="hmc-left">
+          <span class="hmc-label">Drop-off errors decoded</span>
+          <span class="hmc-value">ERR_3DS · ERR_TIMEOUT</span>
+        </div>
+        <span class="hmc-icon">⚡</span>
+      </div>
+      <div class="hero-metric-card">
+        <div class="hmc-left">
+          <span class="hmc-label">Banking relationships</span>
+          <span class="hmc-value">Connected</span>
+        </div>
+        <span class="hmc-trend warn">Gen 4 stack</span>
+      </div>
     </div>
   </div>
 </section>
